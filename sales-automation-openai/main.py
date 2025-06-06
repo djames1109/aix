@@ -4,6 +4,7 @@ from agents import Agent, Runner, enable_verbose_stdout_logging
 
 from agent.email_agent import get_email_sender_agent
 from agent.sales_agent import get_sales_agents_as_tools
+from guardrail.phone_number_guardrail import guardrail_against_phone_number
 from llm.azure_llm import set_azure_as_default_llm
 
 enable_verbose_stdout_logging()
@@ -38,9 +39,11 @@ async def main():
         instructions=sales_manager_instructions,
         tools=get_sales_agents_as_tools(),
         handoffs=[get_email_sender_agent()],
+        input_guardrails=[guardrail_against_phone_number],
         model="gpt-4o-mini")
 
-    message = "Send a cold sales email addressed to 'ICaughtDBomber'"
+    # message = "Send a cold sales email addressed to 'ICaughtDBomber' from +63912-1214. " # This triggers the guardrail tripwire
+    message = "Send a cold sales email addressed to 'ICaughtDBomber' from DJames "
     result = await Runner.run(sales_manager, message)
     print(result)
 

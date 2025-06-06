@@ -1,0 +1,12 @@
+[project]
+name = "hxh-chatbot-azureai"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "gradio>=5.33.0",
+    "openai>=1.84.0",
+    "pypdf2>=3.0.1",
+]

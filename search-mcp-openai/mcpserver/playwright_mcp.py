@@ -1,6 +1,6 @@
 from agents.mcp import MCPServerStdio
 
-playwright_params = {"command": "npx", "args": ["@playwright/mcp@latest"]}
+playwright_params = {"command": "npx", "args": ["@playwright/mcp@latest", "--headless"]}
 
 
 async def get_playwright_mcp():
